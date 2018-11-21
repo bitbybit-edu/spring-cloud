@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "test")
 public class TestController {
 
-    // @Value("${development.foo}")
+    @Value("${liulin}")
     String name = "World";
 
     @RequestMapping("home")
