@@ -1,4 +1,4 @@
-package com.bitbybit.configserver;
+package com.bitbybit.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
