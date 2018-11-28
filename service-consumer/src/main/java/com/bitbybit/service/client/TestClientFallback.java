@@ -2,7 +2,7 @@ package com.bitbybit.service.client;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "testClientFallback")
 public class TestClientFallback implements TestClient{
 
     @Override

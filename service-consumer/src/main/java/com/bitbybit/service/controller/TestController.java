@@ -3,6 +3,7 @@ package com.bitbybit.service.controller;
 import com.bitbybit.service.client.TestClient;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,12 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("test")
 public class TestController {
 
+
     @Autowired
-    TestClient testclient;
+    @Qualifier("serviceProvider")
+    TestClient testClient;
 
     @RequestMapping("hello")
     public String hello() {
-        String hello = testclient.hello();
+        String hello = testClient.hello();
         return hello;
     }
 
