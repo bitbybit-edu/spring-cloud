@@ -28,8 +28,9 @@ public class TestController {
         String hello = testClient.hello();
         Random random = new Random();
         Integer redisKey = random.nextInt(100);
-        redisTemplate.opsForValue().set(redisKey, hello, 3, TimeUnit.MINUTES);
-        return hello;
+//        redisTemplate.opsForValue().set(redisKey, hello, 3, TimeUnit.MINUTES);
+        Boolean aBoolean = redisTemplate.opsForValue().setIfAbsent(redisKey, hello, 3, TimeUnit.DAYS);
+        return hello + aBoolean;
     }
 
 }
