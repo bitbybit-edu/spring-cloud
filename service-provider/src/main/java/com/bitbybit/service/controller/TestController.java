@@ -12,4 +12,8 @@ public class TestController {
         return "hello liulin";
     }
 
+    public Boolean store() {
+        return false;
+    }
+
 }
