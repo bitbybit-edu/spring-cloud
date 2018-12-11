@@ -19,7 +19,7 @@ public class TestController {
     }
 
     @RequestMapping(value = "store", method = RequestMethod.POST)
-    public Integer store() {
+    public Integer store() throws Exception {
         Integer result = storeService.updateStore();
         return result;
     }
