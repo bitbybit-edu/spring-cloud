@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.connection.RedisClusterConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,18 +29,26 @@ public class TestController {
     @Autowired
     RedisConnectionFactory redisConnectionFactory;
 
+
+
     @RequestMapping("hello")
-    public String hello() {
+    public String hello(Integer key) {
         String hello = testClient.hello();
         Random random = new Random();
         Integer redisKey = random.nextInt(100);
 //        redisTemplate.opsForValue().set(redisKey, hello, 3, TimeUnit.MINUTES);
 
-        Boolean aBoolean = redisTemplate.opsForValue().setIfAbsent(redisKey, hello, 3, TimeUnit.DAYS);
+//        Boolean aBoolean = redisTemplate.opsForValue().setIfAbsent(redisKey, key, 3, TimeUnit.DAYS);
 
-        return hello + aBoolean;
+        redisTemplate.opsForValue().set(key, key, 1, TimeUnit.DAYS);
+        return redisTemplate.opsForValue().get(key).toString();
     }
 
+    @RequestMapping("cluster-redis")
+    public String clusterRedis() {
+        RedisClusterConnection clusterConnection = redisConnectionFactory.getClusterConnection();
 
+        return null;
+    }
 
 }
