@@ -39,7 +39,6 @@ public class TestController {
 //        redisTemplate.opsForValue().set(redisKey, hello, 3, TimeUnit.MINUTES);
 
 //        Boolean aBoolean = redisTemplate.opsForValue().setIfAbsent(redisKey, key, 3, TimeUnit.DAYS);
-
         redisTemplate.opsForValue().set(key, key, 1, TimeUnit.DAYS);
         return redisTemplate.opsForValue().get(key).toString();
     }
