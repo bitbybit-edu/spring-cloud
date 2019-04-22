@@ -31,7 +31,7 @@ public class RedisLockController {
         try {
             Boolean result;
             while (!(result = redisTemplate.opsForValue().setIfAbsent("liulin", value, 10, TimeUnit.SECONDS))) {
-                Thread.sleep(5000);
+//                Thread.sleep(5000);
                 logger.info(" Thread-{},is waiting", id);
             }
 
