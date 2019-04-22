@@ -14,5 +14,8 @@
         <module>eureka-server</module>
         <module>service-consumer</module>
         <module>service-provider</module>
+        <module>redis-lock</module>
+        <module>common</module>
+
     </modules>
 </project>
