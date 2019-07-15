@@ -20,5 +20,6 @@
         <module>eureka-server</module>
         <module>service-consumer</module>
         <module>service-provider</module>
+        <module>demo-aop</module>
     </modules>
 </project>
