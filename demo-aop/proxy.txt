@@ -1,0 +1,11 @@
+https://blog.csdn.net/du_senge/article/details/86683959
+https://blog.csdn.net/weixin_43429144/article/details/88697742
+https://www.jianshu.com/p/ba54b0f23c16
+
+
+
+会写动态代理与静态代理   
+明白二者区别
+了解使用场景
+下一步了解AOP  IOC
+https://www.jianshu.com/p/7638a236b8d9
