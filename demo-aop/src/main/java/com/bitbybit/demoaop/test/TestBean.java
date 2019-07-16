@@ -11,10 +11,6 @@ public class TestBean {
 
     private static final Logger logger = Logger.getLogger("com.bitbybit.demoaop.test.TestBean");
 
-    static {
-        logger.log(Level.INFO, "init");
-    }
-
     public void progressing() {
         logger.log(Level.INFO, "progressing");
     }

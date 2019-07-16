@@ -15,7 +15,7 @@ public class LogAspect {
 
     private static final Logger logger = Logger.getLogger("com.bitbybit.demoaop.aspect.LogAspect");
 
-    @Pointcut("execution(* com.bitbybit.demoaop.test.*.*(..))")
+    @Pointcut("execution(* com.bitbybit.demoaop.test..*(..))")
     private void allMethod() {
 
     }
