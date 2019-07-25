@@ -3,6 +3,8 @@ package com.bitbybit.rediscluster;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -10,10 +12,12 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SessionCallback;
+import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,6 +29,9 @@ public class RedisClusterApplicationTests {
 
     @Autowired
     RedisTemplate redisTemplate;
+
+    @Autowired
+    CustomProperties customProperties;
 
     @Test
     public void contextLoads() {
@@ -58,6 +65,17 @@ public class RedisClusterApplicationTests {
             logger.log(Level.SEVERE, "multi", e);
         }
     }
+
+    @Test
+    public void nodes () {
+        try {
+            List<String> nodes = customProperties.getNodes();
+
+            logger.log(Level.SEVERE,"", nodes);
+        }catch (Exception e) {
+            
+        }
+    }
 }
 
 class PipelineCallBack implements RedisCallback {
@@ -87,5 +105,20 @@ class MultiCallBack implements SessionCallback {
         operations.opsForValue().set("5".getBytes(), "5".getBytes());
         operations.opsForValue().set("6".getBytes(), "6".getBytes());
         return null;
+    }
+}
+
+@ConfigurationProperties(prefix="spring.custom")
+@Component
+class CustomProperties {
+
+    private List<String> nodes;
+
+    public List<String> getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(List<String> nodes) {
+        this.nodes = nodes;
     }
 }
