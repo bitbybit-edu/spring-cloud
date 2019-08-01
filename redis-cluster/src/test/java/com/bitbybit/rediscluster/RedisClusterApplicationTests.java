@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 @SpringBootTest
 public class RedisClusterApplicationTests {
 
-    private static final Logger logger = Logger.getLogger("com.bitbybit.rediscluster.RedisClusterApplicationTests");
+    private static final Logger logger = Logger.getLogger(RedisClusterApplicationTests.class.getName());
 
     @Autowired
     RedisTemplate redisTemplate;
@@ -65,13 +65,13 @@ public class RedisClusterApplicationTests {
     }
 
     @Test
-    public void nodes () {
+    public void nodes() {
         try {
             List<String> nodes = customProperties.getNodes();
 
-            logger.log(Level.SEVERE,"", nodes);
-        }catch (Exception e) {
-            
+            logger.log(Level.SEVERE, RedisClusterApplicationTests.class.getName(), "dsafjkasdklfkl");
+        } catch (Exception e) {
+
         }
     }
 }
@@ -106,7 +106,7 @@ class MultiCallBack implements SessionCallback {
     }
 }
 
-@ConfigurationProperties(prefix="spring.custom")
+@ConfigurationProperties(prefix = "spring.custom")
 @Component
 class CustomProperties {
 
