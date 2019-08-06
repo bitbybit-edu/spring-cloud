@@ -24,6 +24,5 @@
         <module>demo-aop</module>
         <module>redis-lock</module>
         <module>redis-cluster</module>
-        <module>dubbo-api</module>
     </modules>
 </project>
